@@ -23,6 +23,9 @@
     }
   ],
 
+  // Workers AI for Whisper speech-to-text (pronunciation grading)
+  "ai": { "binding": "AI" },
+
   // Optional KV for session cache (create: wrangler kv namespace create YORUBA_KV)
   // "kv_namespaces": [
   //   { "binding": "KV", "id": "REPLACE_ME", "preview_id": "REPLACE_ME" }

@@ -1,13 +1,13 @@
 import { Context } from 'hono';
 import { eq } from 'drizzle-orm';
 import { phrases, speakAttempts } from '@/db/schema';
-import { transcribeYoruba, score } from '@/lib/asr-grade';
+import { transcribeYoruba, score, type AiBinding } from '@/lib/asr-grade';
 
 export const onRequestPost = async (c: Context) => {
   const auth = c.get('auth');
   if (!auth?.user) return c.text('Unauthorized', 401);
   const db = c.get('db');
-  const env = c.env as { HF_API_KEY?: string; AUDIO?: R2Bucket };
+  const env = c.env as { AI?: AiBinding; AUDIO?: R2Bucket };
 
   const form = await c.req.formData();
   const phraseId = String(form.get('phraseId'));
@@ -28,12 +28,12 @@ export const onRequestPost = async (c: Context) => {
     console.warn('R2 put failed:', e);
   }
 
-  // Transcribe + score
+  // Transcribe + score via Cloudflare Workers AI
   let transcript = '';
   let breakdown;
   try {
-    if (!env.HF_API_KEY) throw new Error('HF_API_KEY not set');
-    transcript = await transcribeYoruba(env.HF_API_KEY, ab);
+    if (!env.AI) throw new Error('Workers AI binding missing — add `ai` binding in wrangler.jsonc');
+    transcript = await transcribeYoruba(env.AI, ab);
     breakdown = score(phrase.yoruba, transcript, durationMs);
   } catch (e: any) {
     return c.html(

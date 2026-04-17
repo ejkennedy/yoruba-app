@@ -21,6 +21,8 @@
     }
   ],
 
+  "ai": { "binding": "AI" },
+
   "vars": {
     "ENVIRONMENT": "production",
     "AUDIO_PUBLIC_BASE": "https://pub-<ACCOUNT_HASH>.r2.dev"

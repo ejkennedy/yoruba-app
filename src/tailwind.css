@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: yoruba --default, night --prefersdark;
+  themes: yoruba --default, yoruba-dark --prefersdark;
 }
 
 @plugin "daisyui/theme" {
@@ -8,34 +8,107 @@
   default: true;
   prefersdark: false;
   color-scheme: light;
-  --color-base-100: oklch(98% 0.01 80);
-  --color-base-200: oklch(94% 0.02 80);
-  --color-base-300: oklch(88% 0.03 80);
+  --color-base-100: oklch(99% 0.005 85);       /* near-white cream */
+  --color-base-200: oklch(96% 0.012 85);       /* warm paper */
+  --color-base-300: oklch(90% 0.02 85);        /* soft dust */
   --color-base-content: oklch(22% 0.03 280);
-  --color-primary: oklch(46% 0.19 275);          /* adire indigo */
-  --color-primary-content: oklch(98% 0.01 80);
-  --color-secondary: oklch(70% 0.18 55);         /* gold */
+  --color-primary: oklch(52% 0.21 275);        /* adire indigo, slightly brighter */
+  --color-primary-content: oklch(99% 0.005 85);
+  --color-secondary: oklch(74% 0.17 60);       /* warm gold */
   --color-secondary-content: oklch(20% 0.05 60);
-  --color-accent: oklch(62% 0.18 25);            /* terracotta */
-  --color-accent-content: oklch(98% 0.01 80);
-  --color-neutral: oklch(28% 0.02 280);
-  --color-neutral-content: oklch(96% 0.01 80);
+  --color-accent: oklch(64% 0.19 25);          /* terracotta */
+  --color-accent-content: oklch(99% 0.005 85);
+  --color-neutral: oklch(24% 0.02 280);
+  --color-neutral-content: oklch(97% 0.01 80);
   --color-info: oklch(72% 0.15 220);
-  --color-success: oklch(72% 0.17 155);
-  --color-warning: oklch(78% 0.18 80);
+  --color-success: oklch(68% 0.18 155);
+  --color-warning: oklch(80% 0.17 80);
   --color-error: oklch(62% 0.22 25);
-  --radius-selector: 0.5rem;
-  --radius-field: 0.5rem;
-  --radius-box: 0.75rem;
+  --radius-selector: 0.75rem;
+  --radius-field: 0.625rem;
+  --radius-box: 1rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "yoruba-dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+  --color-base-100: oklch(17% 0.02 280);       /* indigo-tinted near-black */
+  --color-base-200: oklch(22% 0.025 280);
+  --color-base-300: oklch(28% 0.03 280);
+  --color-base-content: oklch(94% 0.01 85);
+  --color-primary: oklch(70% 0.20 275);        /* lighter indigo for contrast */
+  --color-primary-content: oklch(15% 0.02 280);
+  --color-secondary: oklch(78% 0.15 60);
+  --color-secondary-content: oklch(18% 0.02 60);
+  --color-accent: oklch(70% 0.20 25);
+  --color-accent-content: oklch(15% 0.02 280);
+  --color-neutral: oklch(30% 0.02 280);
+  --color-neutral-content: oklch(96% 0.01 85);
+  --color-info: oklch(70% 0.15 220);
+  --color-success: oklch(70% 0.18 155);
+  --color-warning: oklch(78% 0.17 80);
+  --color-error: oklch(68% 0.22 25);
+  --radius-selector: 0.75rem;
+  --radius-field: 0.625rem;
+  --radius-box: 1rem;
 }
 
 @layer base {
-  html { font-family: 'Inter', system-ui, sans-serif; }
-  :where(.font-display, h1, h2, h3) { font-family: 'Fraunces', Georgia, serif; }
-  [lang="yo"] { font-feature-settings: "ccmp" on, "mark" on; }
-  .yo { font-family: 'Fraunces', Georgia, serif; letter-spacing: -0.01em; }
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'ss01' on, 'cv11' on;
+  }
+  :where(h1, h2, h3, h4, .font-display) {
+    font-family: 'Fraunces', Georgia, serif;
+    font-feature-settings: 'ss01' on;
+    letter-spacing: -0.02em;
+  }
+  :where([lang="yo"], .yo) {
+    font-family: 'Fraunces', Georgia, serif;
+    font-feature-settings: 'ccmp' on, 'mark' on, 'mkmk' on;
+    letter-spacing: -0.01em;
+  }
+  body {
+    background-image:
+      radial-gradient(circle at 12% 0%, oklch(52% 0.21 275 / 0.06), transparent 50%),
+      radial-gradient(circle at 88% 100%, oklch(74% 0.17 60 / 0.06), transparent 50%);
+    background-attachment: fixed;
+  }
+  [data-theme="yoruba-dark"] body {
+    background-image:
+      radial-gradient(circle at 12% 0%, oklch(70% 0.20 275 / 0.10), transparent 50%),
+      radial-gradient(circle at 88% 100%, oklch(78% 0.15 60 / 0.06), transparent 50%);
+  }
 }
 
 @layer utilities {
-  .tonal { font-feature-settings: "ccmp" on, "mark" on, "mkmk" on; }
+  .tonal { font-feature-settings: 'ccmp' on, 'mark' on, 'mkmk' on; }
+  .grain::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .scroll-snap-y { scroll-snap-type: y mandatory; }
+  .snap-child { scroll-snap-align: start; }
+  .glow-primary {
+    box-shadow: 0 1px 0 0 oklch(52% 0.21 275 / 0.08),
+                0 10px 40px -12px oklch(52% 0.21 275 / 0.25);
+  }
 }
+
+/* Subtle enter animation on HTMX swaps */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.htmx-added { animation: slide-up 180ms ease-out both; }
+[hx-swap] .card, #review-panel { animation: slide-up 220ms ease-out both; }

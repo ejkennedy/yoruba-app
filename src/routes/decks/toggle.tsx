@@ -2,6 +2,8 @@ import { Context } from 'hono';
 import { and, eq } from 'drizzle-orm';
 import { decks, userDecks } from '@/db/schema';
 
+const ICON: Record<string, string> = { core: '📖', slang: '💬', culture: '🥁', custom: '⭐' };
+
 // POST /decks/:slug/toggle — flip active flag for current user
 export const onRequestPost = async (c: Context) => {
   const auth = c.get('auth');
@@ -26,26 +28,29 @@ export const onRequestPost = async (c: Context) => {
     await db.insert(userDecks).values({ userId: auth.user.id, deckId: deck.id, active: true });
   }
 
-  const nowActive = existing ? !existing.active : true;
+  const active = existing ? !existing.active : true;
 
   return c.html(
-    <div class={`card ${nowActive ? 'bg-base-200' : 'bg-base-200/40'} border border-base-300`}>
+    <div class={`card ${active ? 'bg-base-200' : 'bg-base-200/50'} border ${active ? 'border-primary/40' : 'border-base-300/60'} transition-colors`}>
       <div class="card-body">
-        <div class="flex items-start justify-between gap-3">
-          <div>
-            <h3 class="card-title">
-              <a href={`/decks/${deck.slug}`} class="hover:underline">{deck.name}</a>
-            </h3>
-            <p class="text-sm text-base-content/80 mt-2">{deck.description}</p>
-          </div>
+        <div class="flex items-start justify-between">
+          <div class="text-3xl">{ICON[deck.kind] ?? '📖'}</div>
+          {active && <span class="badge badge-primary badge-sm">Active</span>}
+        </div>
+        <h3 class="font-display text-xl font-semibold mt-2">
+          <a href={`/decks/${deck.slug}`} class="hover:text-primary transition-colors">{deck.name}</a>
+        </h3>
+        <p class="text-sm text-base-content/70">{deck.description}</p>
+        <div class="card-actions mt-4 flex-wrap">
+          <a href={`/decks/${deck.slug}`} class="btn btn-ghost btn-sm flex-1">Browse</a>
           <form
             hx-post={`/decks/${deck.slug}/toggle`}
             hx-swap="outerHTML"
             hx-target="closest .card"
-            class="shrink-0"
+            class="flex-1"
           >
-            <button class={`btn btn-sm ${nowActive ? 'btn-primary' : 'btn-ghost'}`}>
-              {nowActive ? 'Active' : 'Enable'}
+            <button class={`btn btn-sm w-full ${active ? 'btn-outline' : 'btn-primary'}`}>
+              {active ? 'Disable' : 'Enable'}
             </button>
           </form>
         </div>

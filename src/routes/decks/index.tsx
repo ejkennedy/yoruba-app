@@ -2,12 +2,18 @@ import { Context } from 'hono';
 import { eq, sql } from 'drizzle-orm';
 import { decks, phrases, userDecks } from '@/db/schema';
 
+const DECK_ICON: Record<string, string> = {
+  core: '📖',
+  slang: '💬',
+  culture: '🥁',
+  custom: '⭐'
+};
+
 export const onRequestGet = async (c: Context) => {
   const db = c.get('db');
   const auth = c.get('auth');
   if (!auth?.user) return c.redirect('/auth/login');
 
-  // deck list with phrase count + user activation
   const rows = await db
     .select({
       id: decks.id,
@@ -23,31 +29,41 @@ export const onRequestGet = async (c: Context) => {
     .orderBy(decks.priority);
 
   return c.render(
-    <section class="space-y-6">
+    <section class="space-y-8">
       <header>
-        <h1 class="font-display text-3xl">Decks</h1>
-        <p class="text-base-content/70">Toggle which decks to study from. New phrases are drawn from active decks.</p>
+        <h1 class="font-display text-4xl font-bold">Decks</h1>
+        <p class="text-base-content/70 mt-1">
+          Choose which decks feed your study queue. You can always toggle.
+        </p>
       </header>
-      <div class="grid md:grid-cols-2 gap-4">
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {rows.map((d) => (
-          <div class={`card ${d.active ? 'bg-base-200' : 'bg-base-200/40'} border border-base-300`}>
+          <div class={`card ${d.active ? 'bg-base-200' : 'bg-base-200/50'} border ${d.active ? 'border-primary/40' : 'border-base-300/60'} transition-colors`}>
             <div class="card-body">
-              <div class="flex items-start justify-between gap-3">
-                <div>
-                  <h3 class="card-title">
-                    <a href={`/decks/${d.slug}`} class="hover:underline">{d.name}</a>
-                  </h3>
-                  <p class="text-xs text-base-content/60 mt-1">{d.phraseCount} phrases · {d.kind}</p>
-                  <p class="text-sm text-base-content/80 mt-2">{d.description}</p>
-                </div>
+              <div class="flex items-start justify-between">
+                <div class="text-3xl">{DECK_ICON[d.kind] ?? '📖'}</div>
+                {d.active && (
+                  <span class="badge badge-primary badge-sm">Active</span>
+                )}
+              </div>
+              <h3 class="font-display text-xl font-semibold mt-2">
+                <a href={`/decks/${d.slug}`} class="hover:text-primary transition-colors">{d.name}</a>
+              </h3>
+              <p class="text-sm text-base-content/70">{d.description}</p>
+              <div class="text-xs text-base-content/50 tabular-nums">
+                {d.phraseCount} phrases
+              </div>
+              <div class="card-actions mt-4 flex-wrap">
+                <a href={`/decks/${d.slug}`} class="btn btn-ghost btn-sm flex-1">Browse</a>
                 <form
                   hx-post={`/decks/${d.slug}/toggle`}
                   hx-swap="outerHTML"
                   hx-target="closest .card"
-                  class="shrink-0"
+                  class="flex-1"
                 >
-                  <button class={`btn btn-sm ${d.active ? 'btn-primary' : 'btn-ghost'}`}>
-                    {d.active ? 'Active' : 'Enable'}
+                  <button class={`btn btn-sm w-full ${d.active ? 'btn-outline' : 'btn-primary'}`}>
+                    {d.active ? 'Disable' : 'Enable'}
                   </button>
                 </form>
               </div>

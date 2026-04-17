@@ -15,6 +15,7 @@ import * as studyIndex from './routes/study/index';
 import * as studySession from './routes/study/session';
 import * as studyGrade from './routes/study/grade';
 import * as progress from './routes/progress';
+import * as words from './routes/words';
 import * as cultureIndex from './routes/culture/index';
 import * as cultureSlug from './routes/culture/[slug]';
 import * as speakIndex from './routes/speak/index';
@@ -46,6 +47,7 @@ export const loadRoutes = <T extends Env>(app: Hono<T>) => {
   mount(app as any, '/study/grade', studyGrade);
 
   mount(app as any, '/progress', progress);
+  mount(app as any, '/words', words);
 
   mount(app as any, '/culture', cultureIndex);
   mount(app as any, '/culture/:slug', cultureSlug);

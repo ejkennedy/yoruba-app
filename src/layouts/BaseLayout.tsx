@@ -43,6 +43,7 @@ export const BaseLayout = jsxRenderer(
                   <>
                     <a href="/study" class="hover:text-primary">Study</a>
                     <a href="/speak" class="hover:text-primary">Speak</a>
+                    <a href="/words" class="hover:text-primary">Words</a>
                     <a href="/decks" class="hover:text-primary">Decks</a>
                     <a href="/culture" class="hover:text-primary">Culture</a>
                     <a href="/progress" class="hover:text-primary">Progress</a>

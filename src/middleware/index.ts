@@ -16,6 +16,7 @@ export const loadMiddleware = <T extends Env>(app: Hono<T>) => {
   app.use('/decks/*', requireAuth);
   app.use('/progress/*', requireAuth);
   app.use('/progress', requireAuth);
+  app.use('/words', requireAuth);
   app.use('/culture/*', requireAuth);
   app.use('/api/*', requireAuth);
 };

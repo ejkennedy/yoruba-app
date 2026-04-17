@@ -23,9 +23,6 @@
     }
   ],
 
-  // Workers AI for Whisper speech-to-text (pronunciation grading)
-  "ai": { "binding": "AI" },
-
   // Optional KV for session cache (create: wrangler kv namespace create YORUBA_KV)
   // "kv_namespaces": [
   //   { "binding": "KV", "id": "REPLACE_ME", "preview_id": "REPLACE_ME" }
@@ -44,7 +41,7 @@
   }
 
   // Secrets set via: wrangler secret put <NAME>
-  //   HF_API_KEY         — Hugging Face inference token (free tier)
+  //   GEMINI_API_KEY     — Google AI Studio key for pronunciation grading (free tier)
   //   ANTHROPIC_API_KEY  — optional, only needed to run slang-deck seeding
   //   R2_ACCESS_KEY_ID   — optional, only if using presigned URLs
   //   R2_SECRET_ACCESS_KEY

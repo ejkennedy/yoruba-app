@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "greetings-respect",
+    "title": "Greetings and the respect register",
+    "summary": "Why 'Ẹ' vs 'O' matters more than any other word you'll learn.",
+    "body": "In Yorùbá, the difference between respectful and familiar speech isn't a stylistic nicety — it's a moral signal. The pronoun **ẹ** (and verb forms that take it) marks respect: to elders, in-laws, strangers, customers, or anyone older than you. Using **o** (familiar) to someone who should get **ẹ** can read as aggressive or dismissive.\n\nRule of thumb for a 20-something:\n- **Strangers, elders, shopkeepers older than you, official settings** → ẹ\n- **Friends your age, close family your age or younger** → o\n\nWhen in doubt, default to ẹ. Nobody is ever offended by being shown extra respect.\n\nGreetings also shift by time of day:\n- Morning: **Ẹ káàárọ̀**\n- Afternoon: **Ẹ káàsán**\n- Evening: **Ẹ kúurọ̀lẹ́**\n- A generic, anytime greeting among peers: **Báwo ni**\n\nYorùbá greetings are acts, not small talk. Skipping the greeting when entering a room, shop, or conversation is genuinely rude — more so than in English.",
+    "relatedPhrases": ["Ẹ káàárọ̀", "Báwo ni", "Ẹ pẹ̀lẹ́", "Ẹ ṣé"]
+  },
+  {
+    "slug": "tones-101",
+    "title": "Tones 101 — the three music notes of Yorùbá",
+    "summary": "Every vowel carries a tone. Get this wrong and 'husband' becomes 'yam'.",
+    "body": "Yorùbá is tonal. Every syllable carries one of three pitches:\n\n- **High** — marked with an acute accent: **á, é, í, ó, ú**\n- **Mid** — unmarked: **a, e, i, o, u**\n- **Low** — marked with a grave accent: **à, è, ì, ò, ù**\n\nSame consonants and vowels, different tones, different meanings:\n\n| Word | Meaning |\n|---|---|\n| **Ọkọ** (mid-mid) | husband |\n| **Ọ̀kọ̀** (low-low) | spear |\n| **Ọkọ̀** (mid-low) | vehicle |\n\nSubdots (ẹ, ọ, ṣ) are **not tones** — they change the vowel or consonant quality (open 'eh', open 'aw', 'sh'). You need both the subdot AND the tone mark on the same letter — that's why you see stacks like **ẹ́** or **ọ̀**.\n\nPractical advice: don't try to reason about tones. Listen, copy, repeat. Your ear will rewire in weeks. The app's audio is your tool — play it before you read.",
+    "relatedPhrases": []
+  },
+  {
+    "slug": "omo-osun-culture",
+    "title": "Ọ̀yọ́ vs Lagos — which Yorùbá are you learning?",
+    "summary": "Quick primer on the major dialects.",
+    "body": "'Yorùbá' covers a dialect continuum across south-west Nigeria, Benin, and parts of Togo. The three major clusters:\n\n- **Ọ̀yọ́** — the basis of Standard Yorùbá taught in schools. What you'll see in textbooks and on the news.\n- **Lagos/Ẹ̀gbá** — urban, code-switches heavily with English and Nigerian Pidgin. What 20-somethings in Lagos actually speak day-to-day.\n- **Ìjẹ̀bú, Èkìtì, Ìjẹ̀ṣà, Ondo** — regional variants; stronger tonal contrasts and some different vocabulary.\n\nThis app teaches **Standard Yorùbá** for the core deck (so you're understood everywhere) and **Lagos register** for the slang deck (so you sound like your friends, not a newsreader).",
+    "relatedPhrases": []
+  }
+]

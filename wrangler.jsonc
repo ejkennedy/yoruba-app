@@ -1,0 +1,48 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "yoruba-app-staging",
+  "compatibility_date": "2025-08-03",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "./src/index.tsx",
+
+  // FILL IN after running: wrangler d1 create yoruba-db-staging
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "yoruba-db-staging",
+      "database_id": "833afd7b-7fca-4e11-8eb7-1dd0223f81a6",
+      "migrations_dir": "./drizzle"
+    }
+  ],
+
+  // FILL IN after running: wrangler r2 bucket create yoruba-audio-staging
+  "r2_buckets": [
+    {
+      "binding": "AUDIO",
+      "bucket_name": "yoruba-audio-staging"
+    }
+  ],
+
+  // Optional KV for session cache (create: wrangler kv namespace create YORUBA_KV)
+  // "kv_namespaces": [
+  //   { "binding": "KV", "id": "REPLACE_ME", "preview_id": "REPLACE_ME" }
+  // ],
+
+  "vars": {
+    "ENVIRONMENT": "staging",
+    "AUDIO_PUBLIC_BASE": "https://pub-e1e4d177358a4805a77f28b588fc4dfd.r2.dev"
+  },
+
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true
+    }
+  }
+
+  // Secrets set via: wrangler secret put <NAME>
+  //   HF_API_KEY         — Hugging Face inference token (free tier)
+  //   ANTHROPIC_API_KEY  — optional, only needed to run slang-deck seeding
+  //   R2_ACCESS_KEY_ID   — optional, only if using presigned URLs
+  //   R2_SECRET_ACCESS_KEY
+}

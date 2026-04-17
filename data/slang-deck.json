@@ -1,0 +1,31 @@
+{
+  "deck": {
+    "slug": "slang",
+    "name": "Yorùbá Slang (Lagos Gen-Z)",
+    "description": "Street Yorùbá + Naija pidgin crossover. What 20-somethings actually say in Lagos.",
+    "kind": "slang",
+    "priority": 20
+  },
+  "phrases": [
+    { "yoruba": "Ṣebí ńbẹ̀?", "english": "You get me? / Like I said right?", "tags": ["slang","filler"], "note": "Confirmation tag, like 'innit?' in British English." },
+    { "yoruba": "Ó rẹ̀ mí", "english": "I'm tired (of this) / fed up", "tags": ["slang","mood"] },
+    { "yoruba": "Wetin dey?", "english": "What's up?", "tags": ["slang","greeting","pidgin"], "note": "Pidgin, but universally understood alongside Yorùbá among Lagos youth." },
+    { "yoruba": "Àbí?", "english": "Right? / Or what?", "tags": ["slang","filler"], "note": "End of a sentence to ask for agreement." },
+    { "yoruba": "Ṣé bí bẹ́ẹ̀ ni?", "english": "Isn't that so?", "tags": ["slang","filler"] },
+    { "yoruba": "Ṣáà má yọ̀", "english": "Just chill / take it easy", "tags": ["slang"] },
+    { "yoruba": "Ẹ jẹ́ ká gbéra", "english": "Let's bounce / let's go", "tags": ["slang"] },
+    { "yoruba": "Gbéra jọ̀wọ́", "english": "Move! (urgent)", "tags": ["slang"] },
+    { "yoruba": "Mo fẹ́ chopa", "english": "I wanna eat", "tags": ["slang","food"], "note": "Code-switch with English/pidgin 'chop'." },
+    { "yoruba": "Àjọ́jẹ", "english": "Hangout / feast", "tags": ["slang","social"] },
+    { "yoruba": "Omo!", "english": "Wow! / OMG!", "tags": ["slang","reaction"], "note": "Universally used across Nigeria." },
+    { "yoruba": "Ṣáà máa dá sí", "english": "Just stay out of it", "tags": ["slang","mood"] },
+    { "yoruba": "No wahala", "english": "No problem (Naija pidgin)", "tags": ["slang","pidgin"], "note": "Default response to almost anything." },
+    { "yoruba": "Mo ti yá", "english": "I'm ready / I'm in", "tags": ["slang"] },
+    { "yoruba": "Àwọn elénìyàn yìí", "english": "These people (shade)", "tags": ["slang","shade"] },
+    { "yoruba": "Inú mi dùn", "english": "I'm happy / feeling good", "tags": ["mood"] },
+    { "yoruba": "Orí mi ti ya", "english": "I'm blown away / can't believe it", "tags": ["slang","reaction"], "note": "Literally 'my head has split'." },
+    { "yoruba": "Gbọ́n", "english": "Be smart / switched on", "tags": ["slang"] },
+    { "yoruba": "Ṣè sọ́ra", "english": "Watch yourself / be careful", "tags": ["slang"] },
+    { "yoruba": "Máa wọlé", "english": "Keep coming / don't stop", "tags": ["slang","encourage"] }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "name": "yoruba-app",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite --port 8788",
+    "build": "vite build",
+    "preview": "npm run build && vite preview",
+    "deploy:staging": "vite build && wrangler deploy",
+    "deploy:prod": "WRANGLER_CONFIG=./wrangler.prod.jsonc vite build && wrangler deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "db:generate": "drizzle-kit generate --config drizzle.config.ts",
+    "db:migrate": "wrangler d1 migrations apply yoruba-db-staging --local",
+    "db:migrate:staging": "wrangler d1 migrations apply yoruba-db-staging --remote",
+    "db:migrate:prod": "wrangler d1 migrations apply yoruba-db --config wrangler.prod.jsonc --remote",
+    "db:seed": "bun run scripts/run-seed.ts",
+    "seed:core": "bun run scripts/seed-core-deck.ts",
+    "seed:slang": "bun run scripts/seed-slang-deck.ts",
+    "seed:culture": "bun run scripts/seed-culture-notes.ts",
+    "seed:audio": "uv run scripts/generate_audio.py",
+    "seed:audio:prod": "uv run scripts/generate_audio.py --prod",
+    "routes": "hono-router ./src/routes ./src/router.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.90.0",
+    "@tailwindcss/vite": "^4.1.12",
+    "aws4fetch": "^1.0.20",
+    "daisyui": "^5.0.51",
+    "drizzle-kit": "0.31.4",
+    "drizzle-orm": "0.44.5",
+    "hono": "^4.9.4",
+    "hono-router": "^1.2.0",
+    "tailwindcss": "^4.1.12",
+    "ts-fsrs": "^4.6.2"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.2.3",
+    "@cloudflare/vitest-pool-workers": "^0.14.7",
+    "@types/bun": "^1.1.14",
+    "vite": "^6.3.5",
+    "vite-ssr-components": "^0.3.0",
+    "vitest": "^4.1.0",
+    "wrangler": "4"
+  }
+}

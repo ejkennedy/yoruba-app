@@ -1,0 +1,35 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "yoruba-app",
+  "compatibility_date": "2025-08-03",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "./src/index.tsx",
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "yoruba-db",
+      "database_id": "REPLACE_WITH_PROD_D1_ID",
+      "migrations_dir": "./drizzle"
+    }
+  ],
+
+  "r2_buckets": [
+    {
+      "binding": "AUDIO",
+      "bucket_name": "yoruba-audio"
+    }
+  ],
+
+  "vars": {
+    "ENVIRONMENT": "production",
+    "AUDIO_PUBLIC_BASE": "https://pub-<ACCOUNT_HASH>.r2.dev"
+  },
+
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true
+    }
+  }
+}

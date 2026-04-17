@@ -1,0 +1,12 @@
+{
+  "name": "Yorùbá — learn to speak",
+  "short_name": "Yorùbá",
+  "description": "Learn Yorùbá to fluency with spaced repetition, native audio, and culture.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f4ea",
+  "theme_color": "#4338ca",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
